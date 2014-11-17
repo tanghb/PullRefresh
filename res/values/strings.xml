@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PullRefresh</string>
+    <string name="refresh_pull_down">下拉刷新</string>
+    <string name="refresh_pull_up">松开刷新数据</string>
+    <string name="refresh_pull_refreshing">正在刷新</string>
+    <string name="refresh_load_more">加载更多</string>
+    <string name="refresh_load_up">松开载入更多</string>
+    <string name="refresh_update_time">上次更新时间：%1s</string>
+
+    <string name="refresh_just_now">刚刚</string>
+    <string name="refresh_minute_before">%1d分钟前</string>
+    <string name="refresh_hour_before">%1d小时前</string>
+    <string name="refresh_date_format">yyyy-MM-dd H:m:s</string>
+
+</resources>
