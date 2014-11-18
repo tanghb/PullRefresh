@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.thb.pullrefresh.R;
 
+
 public class RFooter extends LinearLayout {
 
     public final static int STATE_NORMAL = 1;

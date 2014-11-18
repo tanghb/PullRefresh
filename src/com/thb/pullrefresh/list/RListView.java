@@ -2,7 +2,6 @@
 package com.thb.pullrefresh.list;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -17,8 +16,6 @@ import android.widget.RelativeLayout;
 import android.widget.Scroller;
 
 import com.thb.pullrefresh.R;
-import com.thb.pullrefresh.config.Config;
-import com.thb.pullrefresh.util.Util;
 
 /**
  * @author tanghb
@@ -30,7 +27,6 @@ public class RListView extends ListView implements OnScrollListener {
 
     private final static int PULL_LOAD_MORE_DATA = 50;
 
-    private Context mContext;
     private Scroller mScroller;
     private OnScrollListener mScrollListener;
     private IRListViewListener mRListener;
@@ -85,7 +81,6 @@ public class RListView extends ListView implements OnScrollListener {
     }
 
     private void init(Context context) {
-        mContext = context;
         mScroller = new Scroller(context, new DecelerateInterpolator());
         super.setOnScrollListener(this);
         mHeader = new RHeader(context);
@@ -195,11 +190,10 @@ public class RListView extends ListView implements OnScrollListener {
         if (mIsSetUpdateTime)
             return;
         mIsSetUpdateTime = true;
-        SharedPreferences sp = mContext.getSharedPreferences(Config.UPDATE_INFOS_KEY,
-                Context.MODE_PRIVATE);
-        long time = sp.getLong(Config.LAST_UPDATE_TIME_KEY, 0);
-        String updateTime = Util.getLastUpdateTime(mContext, time);
-        mHeader.setUpdateTime(updateTime);
+
+        if (null != mRListener) {
+            mRListener.onUpdateTime(mHeader);
+        }
     }
 
     /**
@@ -320,5 +314,10 @@ public class RListView extends ListView implements OnScrollListener {
         public void onRefresh();
 
         public void onLoad();
+
+        /**
+         * 更新上次更新列表时间
+         */
+        public void onUpdateTime(RHeader header);
     }
 }

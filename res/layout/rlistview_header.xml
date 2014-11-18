@@ -11,25 +11,19 @@
         android:layout_height="60dp"
         android:layout_gravity="center" >
 
-        <LinearLayout
-            android:id="@+id/left"
+        <ImageView
+            android:id="@+id/img_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:orientation="vertical" >
+            android:src="@drawable/refresh_arrow" />
 
-            <ImageView
-                android:id="@+id/img_arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/refresh_arrow" />
-
-            <ProgressBar
-                android:id="@+id/header_progressbar"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:visibility="gone" />
-        </LinearLayout>
+        <ProgressBar
+            android:id="@+id/header_progressbar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:visibility="invisible" />
 
         <LinearLayout
             android:id="@+id/txt_linear"
@@ -37,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/left"
+            android:layout_toRightOf="@id/img_arrow"
             android:gravity="center_horizontal"
             android:orientation="vertical" >
 

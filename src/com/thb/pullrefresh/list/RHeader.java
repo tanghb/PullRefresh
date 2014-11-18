@@ -1,7 +1,3 @@
-/**
- * 
- */
-
 package com.thb.pullrefresh.list;
 
 import android.content.Context;
@@ -17,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.thb.pullrefresh.R;
+
 
 /**
  * @author tanghb
@@ -88,11 +85,11 @@ public class RHeader extends LinearLayout {
             return;
         if (state == STATE_REFRESHING) {
             mArrow.clearAnimation();
-            mArrow.setVisibility(View.GONE);
+            mArrow.setVisibility(View.INVISIBLE);
             mProgressBar.setVisibility(View.VISIBLE);
         } else {
             mArrow.setVisibility(View.VISIBLE);
-            mProgressBar.setVisibility(View.GONE);
+            mProgressBar.setVisibility(View.INVISIBLE);
         }
         switch (state) {
             case STATE_PULLING:
