@@ -25,13 +25,13 @@ public class RHeader extends LinearLayout {
 
     private LinearLayout mContainer;
 
-    /** ÕıÔÚË¢ĞÂ */
+    /** æ­£åœ¨åˆ·æ–° */
     public static final int STATE_REFRESHING = 1;
-    /** ÏÂÀ­×´Ì¬ */
+    /** ä¸‹æ‹‰çŠ¶æ€ */
     public static final int STATE_PULLING = 2;
-    /** ËÉ¿ª¿ÉÒÔË¢ĞÂ */
+    /** æ¾å¼€å¯ä»¥åˆ·æ–° */
     public static final int STATE_READY = 3;
-    /** µ±Ç°×´Ì¬ */
+    /** å½“å‰çŠ¶æ€ */
     private int mLastState;
 
     private Animation mAnimationUp;
@@ -95,7 +95,7 @@ public class RHeader extends LinearLayout {
             case STATE_PULLING:
                 mPull.setText(getResources().getString(R.string.refresh_pull_down));
                 if (mLastState == STATE_READY) {
-                    // Èç¹ûÉÏÒ»´Î´«ÈëµÄ×´Ì¬ÊÇ ËÉ¿ª¿ÉÒÔË¢ĞÂ£¬Õâ´Î´«ÈëµÄ×´Ì¬±ä³ÉÁË ÏÂÀ­×´Ì¬£¬ĞèÒª½«Í¼Æ¬Ğı×ª
+                    // å¦‚æœä¸Šä¸€æ¬¡ä¼ å…¥çš„çŠ¶æ€æ˜¯ æ¾å¼€å¯ä»¥åˆ·æ–°ï¼Œè¿™æ¬¡ä¼ å…¥çš„çŠ¶æ€å˜æˆäº†ä¸‹æ‹‰çŠ¶æ€ï¼Œéœ€è¦å°†å›¾ç‰‡æ—‹è½¬
                     mArrow.startAnimation(mAnimationDown);
                 }
                 if (mLastState == STATE_REFRESHING) {
@@ -116,7 +116,7 @@ public class RHeader extends LinearLayout {
     }
 
     /**
-     * ÉèÖÃÉÏ´Î¸üĞÂÊ±¼ä
+     * è®¾ç½®ä¸Šæ¬¡æ›´æ–°æ—¶é—´
      * 
      * @param time
      */
@@ -127,7 +127,7 @@ public class RHeader extends LinearLayout {
     }
 
     /**
-     * ÉèÖÃÏÂÀ­Í·¿É¼û¸ß¶È
+     * è®¾ç½®ä¸‹æ‹‰å¤´å¯è§é«˜åº¦
      */
     public void setVisibleHeight(int height) {
         if (height < 0)
@@ -140,7 +140,7 @@ public class RHeader extends LinearLayout {
     }
 
     /**
-     * »ñÈ¡ÏÂÀ­Ë¢ĞÂÍ·µÄ¿É¼û¸ß¶È
+     * è·å–ä¸‹æ‹‰åˆ·æ–°å¤´çš„å¯è§é«˜åº¦
      * 
      * @return
      */

@@ -12,22 +12,22 @@ public class Util {
 
     public static String getLastUpdateTime(Context context, long lastUpdateTime) {
         long now = System.currentTimeMillis();
-        // ÉÏ´Î¸üĞÂÊ±¼äÓëÏÖÔÚÊ±¼äÏà¸ô·ÖÖÓÊı
+        // ä¸Šæ¬¡æ›´æ–°æ—¶é—´ä¸ç°åœ¨æ—¶é—´åƒä¸ªåˆ†é’Ÿæ•°
         long dis = (now - lastUpdateTime) / (1000 * 60);
         String result = "";
-        // Ğ¡ÓÚÒ»·ÖÖÓ£¬ÏÔÊ¾¸Õ¸Õ¸üĞÂ
+        // å°äºä¸€åˆ†é’Ÿï¼Œæ˜¾ç¤ºåˆšåˆšæ›´æ–°
         if (dis < 1) {
             result = context.getString(R.string.refresh_just_now);
         } else {
             if (dis < 60) {
                 result = String.format(context.getString(R.string.refresh_minute_before), dis);
             } else {
-                // Ğ¡Ê±
+                // å°æ—¶
                 dis = dis / 60;
                 if (dis < 24) {
                     result = String.format(context.getString(R.string.refresh_hour_before), dis);
                 } else {
-                    // ²»ÊÇ½ñÌì¸üĞÂµÄ£¬Ö±½ÓÏÔÊ¾Ê±¼ä
+                    // ä¸æ˜¯ä»Šå¤©æ›´æ–°çš„ï¼Œç›´æ¥æ˜¾ç¤ºæ—¶é—´
                     Date lastUpdate = new Date(lastUpdateTime);
                     String format = context.getString(R.string.refresh_date_format);
                     SimpleDateFormat sdf = new SimpleDateFormat(format);

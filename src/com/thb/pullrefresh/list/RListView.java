@@ -31,33 +31,33 @@ public class RListView extends ListView implements OnScrollListener {
     private OnScrollListener mScrollListener;
     private IRListViewListener mRListener;
 
-    /** ÉÏ´Î¸üĞÂÊ±¼äÊÇ·ñÉèÖÃ¹ı,ÈôÉèÖÃ¹ı£¬Ôò²»ÔÙÉèÖÃ£¨Ã¿´ÎÏÂÀ­Ê±²Å¸üĞÂÒ»´ÎÉÏ´Î¸üĞÂÊ±¼ä£¬ÏÂÀ­¹ı³ÌÖĞ²»ÔÚ¸üĞÂ£© */
+    /** ä¸Šæ¬¡æ›´æ–°æ—¶é—´æ˜¯å¦è®¾ç½®è¿‡,è‹¥è®¾ç½®è¿‡ï¼Œåˆ™ä¸å†è®¾ç½®ï¼ˆæ¯æ¬¡ä¸‹æ‹‰æ—¶æ‰æ›´æ–°ä¸€æ¬¡ä¸Šæ¬¡æ›´æ–°æ—¶é—´ï¼Œä¸‹æ‹‰è¿‡ç¨‹ä¸­ä¸åœ¨æ›´æ–°ï¼‰ */
     private boolean mIsSetUpdateTime;
 
     private RHeader mHeader;
-    /** ÊÇ·ñ¿ÉÒÔÏÂÀ­ */
+    /** æ˜¯å¦å¯ä»¥ä¸‹æ‹‰ */
     private boolean mPullDownAble = true;
-    /** ÊÇ·ñÕıÔÚË¢ĞÂ */
+    /** æ˜¯å¦æ­£åœ¨åˆ·æ–° */
     private boolean mRefreshing = false;
 
     private RFooter mFooter;
-    /** ÊÇ·ñ¿ÉÒÔÉÏÀ­¼ÓÔØ */
+    /** æ˜¯å¦å¯ä»¥ä¸Šæ‹‰åŠ è½½ */
     private boolean mPullLoadAble = true;
-    /** ÊÇ·ñÕıÔÚ¼ÓÔØ */
+    /** æ˜¯å¦æ­£åœ¨åŠ è½½ */
     private boolean mLoading = false;
-    /** ÊÇ·ñÒÑ¾­Ìí¼ÓÁËfooter */
+    /** æ˜¯å¦å·²ç»æ·»åŠ äº†footer */
     private boolean mIsAddFooter = false;
 
-    /** item ×ÜµÄÊıÁ¿ */
+    /** item æ€»çš„æ•°é‡ */
     private int mTotalItemCount;
-    /** ÖØÖÃheader¸ß¶ÈÊ±¼ä */
+    /** é‡ç½®headeré«˜åº¦æ—¶é—´ */
     private static final int SCROLL_DURATION = 400;
     private static final float OFFSET_RADIO = 1.8f;
-    /** ÖØÖÃÏÂÀ­Ë¢ĞÂÍ·¸ß¶È */
+    /** é‡ç½®ä¸‹æ‹‰åˆ·æ–°å¤´é«˜åº¦ */
     private static final int RESET_HEADER = 0;
-    /** ÖØÖÃÉÏÀ­¼ÓÔØÍ·¸ß¶È */
+    /** é‡ç½®ä¸Šæ‹‰åŠ è½½å¤´é«˜åº¦ */
     private static final int RESET_FOOTER = 1;
-    /** µ±Ç°ÕıÔÚÖØÖÃµÄ¿Ø¼ş */
+    /** å½“å‰æ­£åœ¨é‡ç½®çš„æ§ä»¶ */
     private int mCurrentSet;
 
     private float mLastY;
@@ -133,7 +133,6 @@ public class RListView extends ListView implements OnScrollListener {
                             if (null != mRListener && !mRefreshing) {
                                 mRListener.onRefresh();
                                 mRefreshing = true;
-                                mIsSetUpdateTime = false;
                             }
                         }
                         resetHeader();
@@ -151,7 +150,7 @@ public class RListView extends ListView implements OnScrollListener {
     }
 
     /**
-     * Í£Ö¹Ë¢ĞÂ
+     * åœæ­¢åˆ·æ–°
      */
     public void stopRefreshing() {
         if (mRefreshing) {
@@ -178,13 +177,13 @@ public class RListView extends ListView implements OnScrollListener {
                 else
                     mHeader.setState(RHeader.STATE_PULLING);
             }
-            // ²»¼ÓÕâ¾ä»°£¬»á³öÏÖÎÊÌâ£¬¾ÍÊÇÏÂÀ­ºó²»ÏëË¢ĞÂÊÖÖ¸ÍùÉÏÒÆ¶¯£¬µ«ÏÔÊ¾»áÓĞÎÊÌâ£¬¾ßÌåÎÊÌâ¿ÉÒÔÊÔÒ»ÊÔ
+            // ä¸åŠ è¿™å¥ä»£ç ï¼Œä¸‹æ‹‰åˆ·æ–°æ—¶ï¼Œä¼šå‡ºé—®é¢˜
             setSelection(0);
         }
     }
 
     /**
-     * ÉÏ´Î¸üĞÂÊ±¼ä
+     * è®¾ç½®ä¸Šæ¬¡æ›´æ–°æ—¶é—´
      */
     private void setUpdateTime() {
         if (mIsSetUpdateTime)
@@ -197,8 +196,8 @@ public class RListView extends ListView implements OnScrollListener {
     }
 
     /**
-     * 1¡¢Òş²Øheader£¨ÒÑ¾­Ë¢ĞÂÍê³É»òÕßÎ´´ïµ½Ë¢ĞÂ¸ß¶È¾ÍËÉ¿ªÊÖÖ¸£©
-     * 2¡¢Èç¹ûÏÂÀ­¸ß¶È´óÓÚheaderÊµ¼Ê¸ß¶È£¬ÔòËÉ¿ªÊÖÖ¸ºóheader¸ß¶È±äÎªÊµ¼Ê¸ß¶È
+     * 1ã€éšè—headerï¼ˆå·²ç»åˆ·æ–°å®Œæˆæˆ–è€…æœªè¾¾åˆ°åˆ·æ–°é«˜åº¦å°±æ¾å¼€æ‰‹æŒ‡ï¼‰
+     * 2ã€å¦‚æœä¸‹æ‹‰é«˜åº¦å¤§äºheaderå®é™…é«˜åº¦ï¼Œåˆ™æ¾å¼€æ‰‹æŒ‡åheaderé«˜åº¦å˜ä¸ºå®é™…é«˜åº¦
      */
     private void resetHeader() {
         int visibleHeight = mHeader.getVisibleHeight();
@@ -212,6 +211,7 @@ public class RListView extends ListView implements OnScrollListener {
         int dy = finalHeight - visibleHeight;
         mCurrentSet = RESET_HEADER;
         mScroller.startScroll(0, visibleHeight, 0, dy, SCROLL_DURATION);
+        mIsSetUpdateTime = false;
         invalidate();
     }
 
@@ -285,7 +285,7 @@ public class RListView extends ListView implements OnScrollListener {
     }
 
     /**
-     * ÉèÖÃÊÇ·ñ¿ÉÒÔÏÂÀ­Ë¢ĞÂ
+     * è®¾ç½®æ˜¯å¦å¯ä»¥ä¸‹æ‹‰åˆ·æ–°
      * 
      * @param able
      */
@@ -294,7 +294,7 @@ public class RListView extends ListView implements OnScrollListener {
     }
 
     /**
-     * ÉèÖÃÊÇ·ñ¿ÉÒÔÉÏÀ­¼ÓÔØ
+     * è®¾ç½®æ˜¯å¦å¯ä»¥ä¸Šæ‹‰åŠ è½½
      * 
      * @param able
      */
@@ -316,7 +316,7 @@ public class RListView extends ListView implements OnScrollListener {
         public void onLoad();
 
         /**
-         * ¸üĞÂÉÏ´Î¸üĞÂÁĞ±íÊ±¼ä
+         * æ›´æ–°ä¸Šæ¬¡æ›´æ–°æ—¶é—´
          */
         public void onUpdateTime(RHeader header);
     }
