@@ -21,7 +21,7 @@ public class MainActivity extends Activity implements IRListViewListener {
     private RListView mListView;
     private ArrayAdapter<String> mAdapter;
     private ArrayList<String> items = new ArrayList<String>();
-    private int start = 0;
+    private int flag = 0;
     private Handler mHandler = new Handler();
 
     @Override
@@ -37,14 +37,14 @@ public class MainActivity extends Activity implements IRListViewListener {
 
     private void refreshItems() {
         for (int i = 0; i != 15; ++i) {
-            items.add("refresh cnt " + (++start));
+            items.add("list items " + (++flag));
         }
         setUpdateTime();
     }
 
     private void loadItems() {
         for (int i = 0; i != 15; ++i) {
-            items.add("refresh cnt " + (++start));
+            items.add("list items " + (++flag));
         }
         setUpdateTime();
     }
